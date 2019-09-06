@@ -1,0 +1,20 @@
+name: Docker Google Container Registry
+description: "Use docker authorized against the Google Container Registry (GCR)"
+author: "Hannes Lohmander"
+inputs:
+  gcloudAuth:
+    required: true
+    description: Base64 encoded JSON credentials for GCLOUD
+  image:
+    required: true
+    description: The image name, eg. gcr.io/company/image
+  tag:
+    required: true
+    description: The image tag
+  dockerfile:
+    required: false
+    description: Path to the dockerfile
+    default: Dockerfile
+runs:
+  using: "docker"
+  image: "Dockerfile"
