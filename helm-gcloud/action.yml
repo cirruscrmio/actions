@@ -24,6 +24,9 @@ inputs:
   set:
     required: false
     description: Override values using --set
+  values:
+    required: false
+    description: Override values using yaml file
 runs:
   using: "docker"
   image: "Dockerfile"
