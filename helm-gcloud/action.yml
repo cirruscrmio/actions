@@ -27,6 +27,10 @@ inputs:
   values:
     required: false
     description: Override values using yaml file
+  namespace:
+    required: false
+    description: Install into kubernetes namespace
+    default: default
 runs:
   using: "docker"
   image: "Dockerfile"
