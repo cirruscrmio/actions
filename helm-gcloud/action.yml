@@ -11,7 +11,7 @@ inputs:
   clusterName:
     required: true
     description: The Kubernetes cluster name
-  cluserZone:
+  clusterZone:
     required: true
     description: The Kubernetes cluster zone
   chartPath:
