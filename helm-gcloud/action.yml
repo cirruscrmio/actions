@@ -31,6 +31,9 @@ inputs:
     required: false
     description: Install into kubernetes namespace
     default: default
+  atomic:
+    required: false
+    description: Pass the --atomic flag to helm
 runs:
   using: "docker"
   image: "Dockerfile"
