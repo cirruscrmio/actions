@@ -10,7 +10,7 @@ gcloud container clusters get-credentials "$INPUT_CLUSTERNAME" --zone "$INPUT_CL
 helm_args=
 
 if [ "$INPUT_ATOMIC" = "true" ]; then
-	helm_args=$helm_args --atomic
+	helm_args="$helm_args --atomic"
 fi
 
 if [ -f "$INPUT_VALUES" ]; then
