@@ -13,8 +13,18 @@ if [ "$INPUT_ATOMIC" = "true" ]; then
 	helm_args="$helm_args --atomic"
 fi
 
-if [ -f "$INPUT_VALUES" ]; then
-	helm upgrade $helm_args --namespace "$INPUT_NAMESPACE" --install "$INPUT_RELEASENAME" --values "$INPUT_VALUES" --set x=x,"$INPUT_SET" "$INPUT_CHARTPATH"
-else
-	helm upgrade $helm_args --namespace "$INPUT_NAMESPACE" --install "$INPUT_RELEASENAME" --set x=x,"$INPUT_SET" "$INPUT_CHARTPATH"
+if [ -n "$INPUT_TIMEOUT" ]; then
+	helm_args="$helm_args --timeout $INPUT_TIMEOUT"
 fi
+
+if [ -n "$INPUT_VALUES" ]; then
+	helm_args="$helm_args --values $INPUT_VALUES"
+fi
+
+helm upgrade \
+	$helm_args \
+	--install \
+	--namespace "$INPUT_NAMESPACE" \
+	--set x=x,"$INPUT_SET" \
+	"$INPUT_RELEASENAME" \
+	"$INPUT_CHARTPATH"
